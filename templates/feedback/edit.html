@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Edit Feedback</h1>
+
+<form action="/feedback/{{ feedback.id }}/update" method="POST">
+    {{ form.hidden_tag() }}
+
+    {% for field in form if field.widget.input_type != 'hidden' %}
+        {{ field.label }}
+        {{ field }}
+
+        {% for error in field.errors %}
+        {{ error }}
+        {% endfor %}
+    {% endfor %}
+
+    <button type="submit">Edit</button>
+
+</form>
+{% endblock %}
